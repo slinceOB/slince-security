@@ -1,11 +1,16 @@
 package com.slince.security.browser;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.slince.security.core.authentication.AbstractChannelSecurityConfig;
 import com.slince.security.core.properties.SecurityConstants;
@@ -21,11 +26,22 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 	@Autowired
 	private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 	
+	@Autowired
+	private DataSource dataSource;
+	
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		applyPasswordAuthenticationConfig(http);
 		
 		http.apply(validateCodeSecurityConfig)
+			.and()
+			.rememberMe()
+				.tokenRepository(persistentTokenRepository())
+				.tokenValiditySeconds(securityProperties.getBrowser().getRememberMeseconds())
+				.userDetailsService(userDetailsService)
 			.and()
 			.authorizeRequests()
 			.antMatchers(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
@@ -41,5 +57,13 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public PersistentTokenRepository persistentTokenRepository() {
+		JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+		tokenRepository.setDataSource(dataSource);
+//		tokenRepository.setCreateTableOnStartup(true);
+		return tokenRepository;
 	}
 }
