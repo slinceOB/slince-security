@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.0.1.227:3306/slinceob?Unicode=true&amp;characterEncoding=UTF-8
+    username: root
+    password: 
+  session:
+    store-type: none
+ 
+#security:
+#  basic:
+#    enabled: false
+
+# 自定义安全框架配置项
+#slince:
+#  security:
+#    browser:
+#      loginPage: /demo-login.html      # 登录页面，没有配置时，跳转到标准登录界面/slince-login.html
+    
