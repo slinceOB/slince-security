@@ -45,9 +45,9 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 			.and()
 			.authorizeRequests()
 			.antMatchers(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
-					SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+ "/*",
 					securityProperties.getBrowser().getLoginPage(),
-					SecurityConstants.DEFAULT_STATIC_RESOURCES_URL).permitAll()  // 匹配到这里的内容，不用认证
+					SecurityConstants.DEFAULT_STATIC_RESOURCES_URL,
+					SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+ "/*").permitAll()  // 匹配到这里的内容，不用认证
 			.anyRequest()
 			.authenticated()
 			.and()

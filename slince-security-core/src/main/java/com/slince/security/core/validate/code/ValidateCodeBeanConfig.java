@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 
 import com.slince.security.core.properties.SecurityProperties;
 import com.slince.security.core.validate.code.image.ImageCodeGenerator;
+import com.slince.security.core.validate.code.sms.DefaultSmsCodeSender;
+import com.slince.security.core.validate.code.sms.SmsCodeSender;
 
 /**
  * 验证码配置相关
@@ -25,5 +27,11 @@ public class ValidateCodeBeanConfig {
 		ImageCodeGenerator codeGenerator = new ImageCodeGenerator();
 		codeGenerator.setSecurityProperties(securityProperties);
 		return codeGenerator;
+	}
+	
+	@Bean
+	@ConditionalOnMissingBean(SmsCodeSender.class)
+	public SmsCodeSender smsCodeSender() {
+		return new DefaultSmsCodeSender();
 	}
 }
