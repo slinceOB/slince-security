@@ -13,6 +13,7 @@ import org.springframework.security.web.authentication.rememberme.JdbcTokenRepos
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.slince.security.core.authentication.AbstractChannelSecurityConfig;
+import com.slince.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.slince.security.core.properties.SecurityConstants;
 import com.slince.security.core.properties.SecurityProperties;
 import com.slince.security.core.validate.code.ValidateCodeSecurityConfig;
@@ -32,11 +33,16 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
+	@Autowired
+	private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
+	
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		applyPasswordAuthenticationConfig(http);
 		
 		http.apply(validateCodeSecurityConfig)
+			.and()
+			.apply(smsCodeAuthenticationSecurityConfig)
 			.and()
 			.rememberMe()
 				.tokenRepository(persistentTokenRepository())
