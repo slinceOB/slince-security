@@ -12,8 +12,9 @@ spring:
 #    enabled: false
 
 # 自定义安全框架配置项
-#slince:
-#  security:
-#    browser:
+slince:
+  security:
+    browser:
 #      loginPage: /demo-login.html      # 登录页面，没有配置时，跳转到标准登录界面/slince-login.html
+      loginType: REDIRECT               # 配置登录成功或失败后的处理方式：REDIRECT,JSON
     
