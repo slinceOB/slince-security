@@ -11,10 +11,16 @@ import com.slince.security.core.validate.code.ValidateCodeGenerator;
 
 @Component("smsValidateCodeGenerator")
 public class SmsCodeGenerator implements ValidateCodeGenerator {
-
+	
+	/**
+	 * 安全配置项注入
+	 */
 	@Autowired
 	private SecurityProperties securityProperties;
 	
+	/**
+	 * 生成验证码
+	 */
 	@Override
 	public ValidateCode generate(ServletWebRequest request) {
 		String code = RandomStringUtils.randomNumeric(securityProperties.getCode().getSms().getLength());
