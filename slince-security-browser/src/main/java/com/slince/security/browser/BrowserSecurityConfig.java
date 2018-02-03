@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 import com.slince.security.core.authentication.AbstractChannelSecurityConfig;
 import com.slince.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
@@ -36,6 +37,10 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 	@Autowired
 	private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
 	
+	@Autowired
+	private SpringSocialConfigurer slinceSocialSecurityConfig;
+	
+	
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		applyPasswordAuthenticationConfig(http);
@@ -44,6 +49,8 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 			.and()
 			.apply(smsCodeAuthenticationSecurityConfig)
 			.and()
+			.apply(slinceSocialSecurityConfig)
+			.and()
 			.rememberMe()
 				.tokenRepository(persistentTokenRepository())
 				.tokenValiditySeconds(securityProperties.getBrowser().getRememberMeseconds())
@@ -51,9 +58,12 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 			.and()
 			.authorizeRequests()
 			.antMatchers(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
+//					SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE,
 					securityProperties.getBrowser().getLoginPage(),
 					SecurityConstants.DEFAULT_STATIC_RESOURCES_URL,
-					SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+ "/*").permitAll()  // 匹配到这里的内容，不用认证
+					SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+ "/*",
+					securityProperties.getBrowser().getSignUpUrl(),
+					"/user/regist").permitAll()  // 匹配到这里的内容，不用认证
 			.anyRequest()
 			.authenticated()
 			.and()

@@ -4,6 +4,7 @@ public class BrowserProperties {
 	
 	private String loginPage = "/slince-login.html";
 	
+	private String signUpUrl = "/slince-signUp.html";
 	
 	private LoginResponseType loginType = LoginResponseType.JSON;
 	
@@ -34,8 +35,13 @@ public class BrowserProperties {
 	public void setRememberMeseconds(int rememberMeseconds) {
 		this.rememberMeseconds = rememberMeseconds;
 	}
-	
-	
-	
 
+	public String getSignUpUrl() {
+		return signUpUrl;
+	}
+
+	public void setSignUpUrl(String signUpUrl) {
+		this.signUpUrl = signUpUrl;
+	}
+	
 }
