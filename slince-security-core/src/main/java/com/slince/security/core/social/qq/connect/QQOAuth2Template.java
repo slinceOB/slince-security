@@ -24,15 +24,15 @@ public class QQOAuth2Template extends OAuth2Template {
 	@Override
 	protected AccessGrant postForAccessGrant(String accessTokenUrl, MultiValueMap<String, String> parameters) {
 		
-		String responseStr = getRestTemplate().getForObject(accessTokenUrl, String.class);
+		String responseStr = getRestTemplate().postForObject(accessTokenUrl, parameters, String.class);
 		
 		logger.info("获取accessToken的相应：" + responseStr);
 		
 		String[] items = StringUtils.splitByWholeSeparatorPreserveAllTokens(responseStr, "&");
 		
 		String accessToken = StringUtils.substringAfterLast(items[0], "=");
-		Long expiresIn = new Long(StringUtils.substringAfterLast(items[0], "="));
-		String refreshToken = StringUtils.substringAfterLast(items[0], "=");
+		Long expiresIn = new Long(StringUtils.substringAfterLast(items[1], "="));
+		String refreshToken = StringUtils.substringAfterLast(items[2], "=");
 		
 		return new AccessGrant(accessToken, null, refreshToken, expiresIn);
 	}

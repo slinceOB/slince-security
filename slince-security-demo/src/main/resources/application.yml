@@ -1,11 +1,14 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://10.0.1.227:3306/slinceob?Unicode=true&amp;characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/slinceob?Unicode=true&amp;characterEncoding=UTF-8
     username: root
-    password: 
+    password: root
   session:
     store-type: none
+ 
+server:
+  port: 80
  
 #security:
 #  basic:
@@ -16,5 +19,15 @@ slince:
   security:
     browser:
 #      loginPage: /demo-login.html      # 登录页面，没有配置时，跳转到标准登录界面/slince-login.html
+      signUpUrl: /demo-signUp.html
       loginType: JSON               # 配置登录成功或失败后的处理方式：REDIRECT,JSON
+    social:
+      filterProcessesUrl: /login
+      qq:
+        app-id: 101386962
+        app-secret: 2a0f820407df400b84a854d054be8b6a
+        
+        
+         
+ 
     

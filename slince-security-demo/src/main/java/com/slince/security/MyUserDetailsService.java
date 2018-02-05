@@ -9,10 +9,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.social.security.SocialUser;
+import org.springframework.social.security.SocialUserDetails;
+import org.springframework.social.security.SocialUserDetailsService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MyUserDetailsService implements UserDetailsService {
+public class MyUserDetailsService implements UserDetailsService, SocialUserDetailsService {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -27,15 +30,20 @@ public class MyUserDetailsService implements UserDetailsService {
 		return buildUser(username);
 	}
 
-	private UserDetails buildUser(String username) {
-		
+	private SocialUserDetails buildUser(String username) {
 		// 根据用户名查找用户信息
 		
 		// 更具查找到的用户信息判断用户是否被冻结、是否有权限等
 		String password = passwordEncoder.encode("123456");
 		logger.info("从数据库中获取到的用密码是：" + password);
-		return new User(username, password, true, true, true, true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+		return new SocialUser(username, password, true, true, true, true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
 		
+	}
+
+	@Override
+	public SocialUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return buildUser(userId);
 	}
 	
 	

@@ -1,14 +1,18 @@
 package com.slince.security.core.social.qq.api;
 
 import org.apache.commons.lang.StringUtils;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.oauth2.TokenStrategy;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * 从QQ获取用户信息
+ * 
+ * 注意：
+ * 		AbstractOAuth2ApiBinding中提供的  accessToken 是一个类级别的变量，所以QQImpl是一个多实例
  * @author tianpengfei
  *
  */
@@ -46,7 +50,7 @@ public class QQImpl extends AbstractOAuth2ApiBinding implements QQ {
 		String url  = String.format(URL_GET_USERINFO, appId, openId);
 		String result = getRestTemplate().getForObject(url, String.class);
 		
-		logger.debug("从QQ获取到的关于用户信息：" + result);
+		logger.info("从QQ获取到的关于用户信息：" + result);
 		
 		QQUserInfo user = null;
 		try {
