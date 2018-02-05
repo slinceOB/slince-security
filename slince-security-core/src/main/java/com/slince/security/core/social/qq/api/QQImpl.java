@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.oauth2.TokenStrategy;
+import org.springframework.social.security.SocialAuthenticationFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

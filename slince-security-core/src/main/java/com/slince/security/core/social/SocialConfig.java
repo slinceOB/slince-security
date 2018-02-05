@@ -22,13 +22,23 @@ import com.slince.security.core.properties.SecurityProperties;
 public class SocialConfig extends SocialConfigurerAdapter {
 
 	@Autowired
-	private DataSource dataSource;
-	
-	@Autowired
 	private SecurityProperties securityProperties;
 	
 	@Autowired(required = false)
 	private ConnectionSignUp connectionSignUp;
+	
+	@Autowired
+	private DataSource dataSource;
+	
+
+	
+	@Bean
+	public SpringSocialConfigurer slinceSocialSecurityConfig() {
+		String filterProcessesUrl = securityProperties.getSocial().getFilterProcessesUrl();
+		SlinceSpringSocialConfigurer configurer = new SlinceSpringSocialConfigurer(filterProcessesUrl);
+		configurer.signupUrl(securityProperties.getBrowser().getSignUpUrl());
+		return configurer;
+	}
 	
 	@Override
 	public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
@@ -39,14 +49,6 @@ public class SocialConfig extends SocialConfigurerAdapter {
 			repository.setConnectionSignUp(connectionSignUp);
 		}
 		return repository;
-	}
-	
-	@Bean
-	public SpringSocialConfigurer slinceSocialSecurityConfig() {
-		String filterProcessesUrl = securityProperties.getSocial().getFilterProcessesUrl();
-		SlinceSpringSocialConfigurer configurer = new SlinceSpringSocialConfigurer(filterProcessesUrl);
-		configurer.signupUrl(securityProperties.getBrowser().getSignUpUrl());
-		return configurer;
 	}
 	
 	@Bean
