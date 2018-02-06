@@ -99,7 +99,7 @@ public class WeiXinOAuth2Template extends OAuth2Template {
 
 	@Override
 	public String buildAuthorizeUrl(OAuth2Parameters parameters) {
-		return buildAuthorizeUrl(parameters);
+		return buildAuthenticateUrl(parameters);
 	}
 
 	@Override

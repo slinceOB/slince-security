@@ -14,7 +14,7 @@ public class SlinceConnectView extends AbstractView {
 			throws Exception {
 
 		response.setContentType("text/html;charset=UTF-8");
-		if(model.get("connection") == null) {
+		if(model.get("connections") == null) {
 			response.getWriter().write("<h3>解绑成功</h3>");
 		}else {
 			response.getWriter().write("<h3>绑定成功</h3>");

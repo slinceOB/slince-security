@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.AbstractView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Component("connect/status")
 public class SlinceConnectionStatusView extends AbstractView {
 
 	@Autowired
