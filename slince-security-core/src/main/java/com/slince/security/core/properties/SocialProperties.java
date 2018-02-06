@@ -10,6 +10,8 @@ public class SocialProperties {
 	private String filterProcessesUrl = "/auth";
 	
 	private QQproperties qq = new QQproperties();
+	
+	private WeiXinProperties weixin = new WeiXinProperties();
 
 	public String getFilterProcessesUrl() {
 		return filterProcessesUrl;
@@ -26,7 +28,13 @@ public class SocialProperties {
 	public void setQq(QQproperties qq) {
 		this.qq = qq;
 	}
-	
-	
+
+	public WeiXinProperties getWeixin() {
+		return weixin;
+	}
+
+	public void setWeixin(WeiXinProperties weixin) {
+		this.weixin = weixin;
+	}
 	
 }
