@@ -8,11 +8,12 @@ package com.slince.security.core.properties;
 public class ImageCodeProperties extends SmsCodeProperties {
 	
 	public ImageCodeProperties() {
-		setWidth(4);
+		setLength(4);
 	}
 	
-	private int width = 67;
-	private int height = 23;
+	private int width = 120;
+	private int height = 40;
+	private int lineCount = 20;
 	
 	public int getWidth() {
 		return width;
@@ -26,5 +27,12 @@ public class ImageCodeProperties extends SmsCodeProperties {
 	public void setHeight(int height) {
 		this.height = height;
 	}
+	public int getLineCount() {
+		return lineCount;
+	}
+	public void setLineCount(int lineCount) {
+		this.lineCount = lineCount;
+	}
+	
 
 }

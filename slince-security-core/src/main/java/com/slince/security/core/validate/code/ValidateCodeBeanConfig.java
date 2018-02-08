@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.slince.security.core.properties.SecurityProperties;
+import com.slince.security.core.validate.code.image.DefaultImageCodeGenerator;
 import com.slince.security.core.validate.code.image.ImageCodeGenerator;
 import com.slince.security.core.validate.code.sms.DefaultSmsCodeSender;
 import com.slince.security.core.validate.code.sms.SmsCodeSender;
@@ -24,9 +25,9 @@ public class ValidateCodeBeanConfig {
 	@Bean
 	@ConditionalOnMissingBean(name = "imageValidateCodeGenerator")
 	public ValidateCodeGenerator imageValidateCodeGenerator() {
-		ImageCodeGenerator codeGenerator = new ImageCodeGenerator();
-		codeGenerator.setSecurityProperties(securityProperties);
-		return codeGenerator;
+		DefaultImageCodeGenerator defaultImageCodeGenerator = new DefaultImageCodeGenerator();
+		defaultImageCodeGenerator.setSecurityProperties(securityProperties);
+		return defaultImageCodeGenerator;
 	}
 	
 	@Bean

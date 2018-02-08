@@ -1,3 +1,4 @@
+# 数据库相关配置
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -6,10 +7,12 @@ spring:
     password: 
   session:
     store-type: none
- 
+    
+# 服务端口配置
 server:
   port: 80
  
+#安全相关配置
 #security:
 #  basic:
 #    enabled: false
@@ -17,10 +20,23 @@ server:
 # 自定义安全框架配置项
 slince:
   security:
+#之下为验证码相关配置
+    code:
+      image:
+        width: 120                      # 图形验证码宽度     默认是：120
+        height: 40                      # 高度                           默认是：40
+        line-count: 20                  # 干扰线条数             默认是：20
+        length: 4                       # 字符长度                  默认是：4
+        expireIn: 60                    # 过期时间                  默认是：60
+          
+
+# 之下为登录跳转的配置
     browser:
 #      loginPage: /demo-login.html      # 登录页面，没有配置时，跳转到标准登录界面/slince-login.html
       signUpUrl: /demo-signUp.html
       loginType: REDIRECT               # 配置登录成功或失败后的处理方式：REDIRECT,JSON
+    
+# 之下为spring-social相关配置（第三方登录）
     social:
       filterProcessesUrl: /login
       qq:
