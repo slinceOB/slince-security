@@ -1,81 +1,65 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-
-    <head>
-
-        <meta charset="utf-8">
-        <title>slince auth login</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <!-- CSS -->
-        <!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'> -->
-        <link rel="stylesheet" href="static/css/reset.css">
-        <link rel="stylesheet" href="static/css/supersized.css">
-        <link rel="stylesheet" href="static/css/style.css">
-
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-    </head>
-
-    <body>
-
-        <div class="page-container">
-            <h1>Login</h1>
-            <form action="/authentication/form" method="post">
-                <input type="text" name="username" class="username" placeholder="Username">
-                <input type="password" name="password" class="password" placeholder="Password">
-                <input type="text" name="imageCode">
-					<img src="/code/image?width=200">
-					<input name="remember-me" type="checkbox" value="true" />Remember Me
-                <button type="submit">Sign me in</button>
-                <div class="error"><span>+</span></div>
-            </form>
-            <div class="connect">
-                <p>Or connect with:</p>
-                <p>
-                    <a class="facebook" href=""></a>
-                    <a class="twitter" href=""></a>
-                </p>
-            </div>
-        </div>
-        <h3>短信登录</h3>
-	<form action="/authentication/mobile" method="post">
-		<table>
-			<tr>
-				<td>手机号:</td>
-				<td><input type="text" name="mobile" value="13012345678"></td>
-			</tr>
-			<tr>
-				<td>短信验证码:</td>
-				<td>
-					<input type="text" name="smsCode">
-					<a href="/code/sms?mobile=13012345678">发送验证码</a>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2"><button type="submit">登录</button></td>
-			</tr>
-		</table>
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>The Facebook-Twitter-Google-Login Website Template | Home :: w3layouts</title>
+<link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+</head>
+<body>
+<div class="wrap">
+<!-- strat-contact-form -->	
+<div class="contact-form">
+<!-- start-form -->
+	<form class="contact_form" action="/authentication/form" method="post" name="contact_form">
+		<h1>Login Into Your Account</h1>
+	    <ul>
+	        <li>
+	            <input type="text" class="textbox1" name="username" placeholder="username" required />
+	            <span class="form_hint">Enter a valid Username</span>
+	             <p><img src="static/images/contact.png" alt=""></p>
+	        </li>
+	        <li>
+	            <input type="password" name="password" class="textbox2" placeholder="password">
+	            <p><img src="static/images/lock.png" alt=""></p>
+	        </li>
+	        <li>
+	            <input type="text" name="imageCode" class="textbox2" placeholder="validateCode">
+	            <!-- <p><img src="static/images/lock.png" alt=""></p> -->
+	            <img src="/code/image">
+	        </li>
+         </ul>
+       	 	<input type="submit" name="Sign In" value="Sign In"/>
+			<div class="clear"></div>	
+			<label class="checkbox"><input type="checkbox" name="remember-me" checked><i></i>Remember me</label>
+		<div class="forgot">
+			<a href="#">forgot password?</a>
+		</div>	
+		<div class="clear"></div>	
 	</form>
-	<h3>社交登录</h3>
-	<a href="/login/qq">QQ登录</a>
-	&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="/login/weixin">微信登录</a>
-	<br>
-        <div align="center">Collect from <a href="#" target="_blank" title="slinceob auth">slinceob auth</a></div>
-
-        <!-- Javascript -->
-        <script src="static/js/jquery-1.8.2.min.js"></script>
-        <script src="static/js/supersized.3.2.7.min.js"></script>
-        <script src="static/js/supersized-init.js"></script>
-        <script src="static/js/scripts.js"></script>
-
-    </body>
-
+<!-- end-form -->
+<!-- start-account -->
+<div class="account">
+	<h2><a href="#">Don' have an account? Sign Up!</a></h2>
+    <div class="span"><a href="#"><img src="static/images/facebook.png" alt=""/><i>Sign In with QQ</i><div class="clear"></div></a></div>	
+    <div class="span1"><a href="#"><img src="static/images/twitter.png" alt=""/><i>Sign In with WeiXin</i><div class="clear"></div></a></div>
+    <div class="span2"><a href="#"><img src="static/images/gplus.png" alt=""/><i>Sign In with Sina</i><div class="clear"></div></a></div>
+</div>	
+<!-- end-account -->
+<div class="clear"></div>	
+</div>
+<!-- end-contact-form -->
+<div class="footer">
+	<p>Template by <a href="http://w3layouts.com">w3layouts</a></p>
+</div>
+</div>
+</body>
 </html>
-
