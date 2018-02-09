@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.social.security.SpringSocialConfigurer;
@@ -40,6 +41,9 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 	@Autowired
 	private SpringSocialConfigurer slinceSocialSecurityConfig;
 	
+	@Autowired
+	private LogoutSuccessHandler logoutSuccessHandler;
+	
 	
 	protected void configure(HttpSecurity http) throws Exception {
 		
@@ -63,9 +67,15 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 					SecurityConstants.DEFAULT_STATIC_RESOURCES_URL,
 					SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+ "/*",
 					securityProperties.getBrowser().getSignUpUrl(),
-					"/user/regist").permitAll()  // 匹配到这里的内容，不用认证
+					"/user/regist", 
+					securityProperties.getBrowser().getLogoutUrl()).permitAll()  // 匹配到这里的内容，不用认证
 			.anyRequest()
 			.authenticated()
+			.and()
+			.logout()
+				.logoutUrl("/logout")
+				.logoutSuccessHandler(logoutSuccessHandler)
+				.deleteCookies("JSESSIONID")
 			.and()
 			.csrf().disable();
 	};

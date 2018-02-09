@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>The Facebook-Twitter-Google-Login Website Template | Home :: w3layouts</title>
+<title>The QQ-WeiXin-Sina-Login Website Template | Home :: slinceob</title>
 <link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39,26 +39,49 @@ License URL: http://creativecommons.org/licenses/by/3.0/
          </ul>
        	 	<input type="submit" name="Sign In" value="Sign In"/>
 			<div class="clear"></div>	
-			<label class="checkbox"><input type="checkbox" name="remember-me" checked><i></i>Remember me</label>
+			<label class="checkbox"><input type="checkbox" name="remember-me"><i></i>Remember me</label>
 		<div class="forgot">
 			<a href="#">forgot password?</a>
 		</div>	
 		<div class="clear"></div>	
 	</form>
+	
+	
+	<!-- <h3>短信登录</h3>
+	<form action="/authentication/mobile" method="post">
+		<table>
+			<tr>
+				<td>手机号:</td>
+				<td><input type="text" name="mobile" value="13012345678"></td>
+			</tr>
+			<tr>
+				<td>短信验证码:</td>
+				<td>
+					<input type="text" name="smsCode">
+					<a href="/code/sms?mobile=13012345678">发送验证码</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><button type="submit">登录</button></td>
+			</tr>
+		</table>
+	</form> -->
+	
+	
 <!-- end-form -->
 <!-- start-account -->
 <div class="account">
 	<h2><a href="#">Don' have an account? Sign Up!</a></h2>
-    <div class="span"><a href="#"><img src="static/images/facebook.png" alt=""/><i>Sign In with QQ</i><div class="clear"></div></a></div>	
-    <div class="span1"><a href="#"><img src="static/images/twitter.png" alt=""/><i>Sign In with WeiXin</i><div class="clear"></div></a></div>
-    <div class="span2"><a href="#"><img src="static/images/gplus.png" alt=""/><i>Sign In with Sina</i><div class="clear"></div></a></div>
+    <div class="span"><a href="/login/qq"><img src="static/images/facebook.png" alt=""/><i>Sign In with QQ</i><div class="clear"></div></a></div>	
+    <div class="span1"><a href="/login/weixin"><img src="static/images/twitter.png" alt=""/><i>Sign In with WeiXin</i><div class="clear"></div></a></div>
+    <div class="span2"><a href="/login/sina"><img src="static/images/gplus.png" alt=""/><i>Sign In with Sina</i><div class="clear"></div></a></div>
 </div>	
 <!-- end-account -->
 <div class="clear"></div>	
 </div>
 <!-- end-contact-form -->
 <div class="footer">
-	<p>Template by <a href="http://w3layouts.com">w3layouts</a></p>
+	<p>Template by <a href="#">slinceob</a></p>
 </div>
 </div>
 </body>

@@ -34,6 +34,7 @@ slince:
     browser:
 #      loginPage: /demo-login.html      # 登录页面，没有配置时，跳转到标准登录界面/slince-login.html
       signUpUrl: /demo-signUp.html
+#      logout-url: /demo-login.html     # 退出成功后，跳转的页面，        默认配置为：json，返回json格式的数据
       loginType: REDIRECT               # 配置登录成功或失败后的处理方式：REDIRECT,JSON
     
 # 之下为spring-social相关配置（第三方登录）
