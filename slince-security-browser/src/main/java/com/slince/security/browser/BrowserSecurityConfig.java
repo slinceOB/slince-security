@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.rememberme.JdbcTokenRepos
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.session.InvalidSessionStrategy;
 import org.springframework.security.web.session.SessionInformationExpiredStrategy;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.social.security.SpringSocialConfigurer;
 
 import com.slince.security.core.authentication.AbstractChannelSecurityConfig;
@@ -23,6 +24,7 @@ import com.slince.security.core.properties.SecurityProperties;
 import com.slince.security.core.validate.code.ValidateCodeSecurityConfig;
 
 @Configuration
+@EnableRedisHttpSession
 public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 
 	@Autowired

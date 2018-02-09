@@ -1,9 +1,12 @@
 package com.slince.security.core.validate.code;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class ValidateCode {
+public class ValidateCode implements Serializable {
 	
+	private static final long serialVersionUID = -6750804664632069176L;
+
 	private String code;
 	
 	private LocalDateTime expireTime;

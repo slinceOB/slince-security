@@ -8,8 +8,11 @@ spring:
   jpa:
     show-sql: true
     
+  redis:
+    host: 10.0.1.57
+    port: 6370
   session:
-    store-type: none
+    store-type: REDIS  
     
 # 服务端口配置
 server:
@@ -51,7 +54,7 @@ slince:
       
 #      session:
 #        maximum-sessions: 1                                             # 最大共存session数量                  默认是：1
-#        max-sessions-prevents-login: false                              # 
+#        max-sessions-prevents-login: false                              # false代表之后的登录踢掉之前的登录； true 代表不允许之后登录
 #        session-invalid-url: /demo-session-invalid.html                 # session过期后，跳转的页面或者返回json
         
         

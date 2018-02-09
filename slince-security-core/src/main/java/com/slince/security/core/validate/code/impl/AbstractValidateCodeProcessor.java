@@ -95,7 +95,10 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
 	 * @param validateCode
 	 */
 	private void save(ServletWebRequest request, C validateCode) {
-		sessionStrategy.setAttribute(request, getSessionKey(request), validateCode);
+		// 保存到session中的验证码只需要code 和  expireTime即可
+		ValidateCode code = new ValidateCode(validateCode.getCode(), validateCode.getExpireTime());
+		
+		sessionStrategy.setAttribute(request, getSessionKey(request), code);
 	}
 	
 	/**
