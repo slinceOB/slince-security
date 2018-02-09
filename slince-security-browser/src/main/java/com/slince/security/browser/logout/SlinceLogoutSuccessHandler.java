@@ -39,7 +39,7 @@ public class SlinceLogoutSuccessHandler implements LogoutSuccessHandler {
 			throws IOException, ServletException {
 		logger.info("退出成功");
 		
-		if(StringUtils.equalsIgnoreCase(logoutSuccessUrl, "json")) {
+		if(!StringUtils.endsWithIgnoreCase(logoutSuccessUrl, ".html")) {
 			response.setContentType("application/json;charset=UTF-8");
 			response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse("退出成功")));
 		}else {
