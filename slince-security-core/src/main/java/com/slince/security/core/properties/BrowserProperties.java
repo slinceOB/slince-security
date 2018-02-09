@@ -4,11 +4,25 @@ public class BrowserProperties {
 	
 	private SessionProperties session = new SessionProperties();
 	
+	/**
+	 * 登录界面
+	 */
 	private String loginPage = "/slince-login.html";
 	
+	/**
+	 * 注册界面
+	 */
 	private String signUpUrl = "/slince-signUp.html";
 	
-	private String logoutUrl = "json";
+	/**
+	 * 登录成功后，自动跳转的页面
+	 */
+	private String signInSuccessUrl = "/index.html";
+	
+	/**
+	 * 登出跳转界面
+	 */
+	private String logoutUrl = "/slince-login.html";
 	
 	private LoginResponseType loginType = LoginResponseType.JSON;
 	
@@ -62,6 +76,14 @@ public class BrowserProperties {
 
 	public void setSession(SessionProperties session) {
 		this.session = session;
+	}
+
+	public String getSignInSuccessUrl() {
+		return signInSuccessUrl;
+	}
+
+	public void setSignInSuccessUrl(String signInSuccessUrl) {
+		this.signInSuccessUrl = signInSuccessUrl;
 	}
 	
 }
