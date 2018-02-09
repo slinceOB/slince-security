@@ -1,9 +1,3 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -34,7 +28,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	        <li>
 	            <input type="text" name="imageCode" class="textbox2" placeholder="validateCode">
 	            <!-- <p><img src="static/images/lock.png" alt=""></p> -->
-	            <img src="/code/image">
+	            <img id="imageCode" src="/code/image" onclick="refreshcode()">
 	        </li>
          </ul>
        	 	<input type="submit" name="Sign In" value="Sign In"/>
@@ -84,5 +78,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<p>Template by <a href="#">slinceob</a></p>
 </div>
 </div>
+
+<script type="text/javascript">
+	function refreshcode() {
+		document.getElementById("imageCode").src="/code/image?random="+Math.random();
+	}
+
+</script>
+
 </body>
 </html>

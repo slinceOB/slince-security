@@ -32,5 +32,6 @@ public class BrowserSecurityBeanConfig {
 	public LogoutSuccessHandler logoutSuccessHandler() {
 		return new SlinceLogoutSuccessHandler(securityProperties.getBrowser().getLogoutUrl());
 	}
+	
 
 }
