@@ -2,6 +2,8 @@ package com.slince.security.core.properties;
 
 public class BrowserProperties {
 	
+	private SessionProperties session = new SessionProperties();
+	
 	private String loginPage = "/slince-login.html";
 	
 	private String signUpUrl = "/slince-signUp.html";
@@ -53,7 +55,13 @@ public class BrowserProperties {
 	public void setLogoutUrl(String logoutUrl) {
 		this.logoutUrl = logoutUrl;
 	}
-	
-	
+
+	public SessionProperties getSession() {
+		return session;
+	}
+
+	public void setSession(SessionProperties session) {
+		this.session = session;
+	}
 	
 }

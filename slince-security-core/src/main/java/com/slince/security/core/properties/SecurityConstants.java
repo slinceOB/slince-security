@@ -41,5 +41,10 @@ public interface SecurityConstants {
 	 * 默认的手机验证码登录请求处理url
 	 */
 	public static final String DEFAULT_LOGIN_PROCESSING_URL_MOBILE = "/authentication/mobile";
+	
+	/**
+	 * session失效默认的跳转地址
+	 */
+	public static final String DEFAULT_SESSION_INVALID_URL = "/session/invalid";
 
 }
